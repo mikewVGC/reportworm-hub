@@ -2,7 +2,10 @@ export default {
     data() {
         return {
             currentRoute: '',
-            currentView: 'loading',
+            currentView: 'hub',
+
+            migrating: false,
+            migrationMessage: '',
 
             sitesNav: [],
         }
@@ -29,12 +32,14 @@ export default {
             }
 
             switch (this.currentView) {
-                case 'report':
+                case 'hub':
                     return {
+                        migrationMessage: this.migrationMessage,
                     };
 
                 case 'migration':
                     return {
+                        migrationMessage: this.migrationMessage,
                     };
             }
 
@@ -48,7 +53,6 @@ export default {
             window.addEventListener('click', (e) => {
                 if (e.target && e.target.closest('a')) {
                     const anchor = e.target.closest('a');
-
                     if ('pass' in anchor.dataset && anchor.dataset.pass == 1) {
                         return;
                     }
@@ -91,6 +95,12 @@ export default {
         },
 
         migrateReporter() {
+            if (this.migrating) {
+                return;
+            }
+
+            this.migrating = true;
+
             const transferData = {};
             for (let i = 0; i < localStorage.length; i++) {
                 const key = localStorage.key(i);
@@ -105,22 +115,23 @@ export default {
 
                 window.close();
             } else {
-                document.body.innerHTML = "Migration failed: No opener window detected.";
+                this.migrationMessage = "Migration failed: No opener window detected.";
             }
         },
     },
 
     components: {
-        'loading': {
-            template: '#loading-template',
-        },
-
         'hub': {
             template: '#hub-template',
+            props: [ 'migrationMessage' ],
         },
 
         'migration': {
             template: '#migration-template',
+            props: [ 'migrationMessage' ],
+            mounted: function() {
+                this.$parent.migrateReporter();
+            },
         }
     },
 }
