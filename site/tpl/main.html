@@ -1,0 +1,177 @@
+__TPL_HEAD__
+
+<body>
+
+<main id="app">
+
+    <nav id="sites-nav">
+        <input type="checkbox" id="menu-toggle" aria-label="Toggle Menu" />
+        <label for="menu-toggle" class="menu-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <div class="nav-items">
+        <div v-for="site in sitesNav" :class="{ active: site.active }">
+            <a :href="`${site.url}`" v-html="site.name" data-pass="1" target="_blank"></a>
+        </div>
+        </div>
+    </nav>
+
+    <header id="header">
+        <h1><a href="/">Reportworm Stats</a></h1>
+    </header>
+
+    <nav id="main-nav">
+        <div></div>
+    </nav>
+
+    <component
+        :is="currentView"
+        v-bind="currentProps"
+    ></component>
+
+    <footer>
+        <section>
+            <p>&copy; __YEAR__ Reportworm | Thanks for using <a href="/" data-pass="1">Reportworm Hub!</a><br>
+            Not affiliated with Pokemon, which is &copy; The Pokemon Company / Nintendo</p>
+        </section>
+    </footer>
+
+</main>
+
+<template id="loading-template">
+
+    <div id="loading">
+        <h2>Loading Data</h2>
+        <p>It'll be ready in just a moment...</p>
+    </div>
+
+</template>
+
+<template id="hub-template">
+    
+    <p>Welcome to <em>Reportworm Hub</em>, a central location for all things Reportworm. This site came about as a way to link all other Reportworm sites and tools together in some way. You can find links to those sites as well as other things I've been working on below.</p>
+
+    <div class="info-box">
+        <h3>Looking For (The Original) Reportworm?</h3>
+
+        <p>If you're looking for Reportworm replay analyzer, it's now called <strong><a href="https://reporter.reportworm.com/" target="_blank">Reportworm Reporter</a></strong>, and has moved to a new location at <strong><a href="https://reporter.reportworm.com/" target="_blank">https://reporter.reportworm.com/</a></strong>.</p>
+
+        <p>Visit the site at the new URL and you'll be able to import your teams and view them at the new location.</p>
+    </div>
+
+    <h2>The Reportworm Family</h2>
+
+    <p>Various Reportworms, which utilize official standings and team data in different ways.</p>
+
+    <div class="reportworms-list">
+
+        <div id="reportworm-standings">
+            <h3><a href="http://standings.reportworm.com/">Reportworm Standings</a></h3>
+            <p>Full standings, teamsheets, and usage data for all official events. As seen on your favorite VGC YouTuber's or Twitch streamer's videos.</p>
+            <p><a href="https://github.com/mikewVGC/vgc-standings">Github Repo</a></p>
+        </div>
+
+        <div id="reportworm-meta">
+            <h3><a href="http://meta.reportworm.com/">Reportworm Meta</a></h3>
+            <p>The most successful teams based on successful runs in both official and grassroots events. Use this if you want to know what teams and Pokemon players are using to the most success.</p>
+            <p><a href="https://github.com/mikewVGC/reportworm-meta">Github Repo</a></p>
+        </div>
+
+        <div id="reportworm-svstats">
+            <h3><a href="http://svstats.reportworm.com/">Reportworm Stats</a> (<em>Scarlet &amp; Violet</em> Era)</h3>
+            <p>Combined stats for all <em>Scarlet &amp; Violet</em> official events. Stats for both Pokemon and players that can be broken down by ruleset or season. No longer updated since the end of <em>Scarlet &amp; Violet</em> at official events.</p>
+            <p><a href="https://github.com/mikewVGC/reportworm-svstats">Github Repo</a></p>
+        </div>
+
+    </div>
+
+    <h2>Other Projects</h2>
+
+    <p>Projects of varying success intended to save you time or help you improve at VGC.</p>
+
+    <div class="reportworms-list">
+
+        <div id="reportworm-reporter">
+            <h3><a href="https://reporter.reportworm.com/">Reportworm Reporter</a></h3>
+            <p>The original Reportworm, now slightly rebranded. Shows useful stats for your team based on Pokemon Showdown replays. I'll continue to support it for a while, but there are likely other more well maintained tools out there.</p>
+        </div>
+
+        <div id="reportworm-hub">
+            <h3><a href="https://reportworm.com/">Reportworm Hub</a></h3>
+            <p>Hey, it's this site!</p>
+            <p><a href="https://github.com/mikewVGC/reportworm-hub">Github Repo</a></p>
+        </div>
+
+        <div id="ev-adjustment-calc">
+            <h3><a href="https://mikewvgc.github.io/ev-adjustment-calc/">EV Adjustment Calc</a></h3>
+            <p>No longer useful in a <em>Pokemon Champions</em> world, you could use this tool to quickly know how many (and which types) of berries and vitamins were needed to change a Pokemon's spread. Cheaper than doing a full wipe and starting from scratch, and easier than doing it in your head!</p>
+
+            <p><a href="https://github.com/mikewVGC/ev-adjustment-calc">Github Repo</a></p>
+        </div>
+
+    </div>
+
+    <h2>Code Projects</h2>
+
+    <p>These are things you can only view on Github. These are some of the custom tools I use for building all these websites.</p>
+
+    <div class="reportworms-list code-projects">
+
+        <div id="paste-parser">
+            <h3><a href="https://github.com/mikewVGC/paste-parser">Paste Parser</a></h3>
+            <p>Very simple Python library for parsing Pokepastes. Extracts everything from the paste and populates some basic dataclasses.</p>
+        </div>
+
+        <div id="showdown-spriter">
+            <h3><a href="https://github.com/mikewVGC/sd-spriter">Showdown Spriter</a></h3>
+            <p>Quick and dirty script that builds a mini-sprites sprite sheet for all Pokemon and items. These are the little icons you see on your a list of teams in the team builder.</p>
+        </div>
+
+        <div id="reportworm-builder">
+            <h3><a href="https://github.com/mikewVGC/reportworm-builder">Reportworm Builder</a></h3>
+            <p>Site builder for the various Reportworms. I doubt it's particularly useful to anyone else, but it's here if you want it.</p>
+        </div>
+
+    </div>
+
+    <h2>Credits </h2>
+
+    <ul>
+        <li><p>Programming and site design is by <a href="https://bsky.app/profile/mikew.reportworm.com" target="_blank">Mike W</a>, who you can find on BlueSky, I guess (I also have <a href="http://twitter.com/mikewVGC" target="_blank">a Twitter</a>). A few VGC projects (including this one) can be found <a href="https://github.com/mikewVGC" data-pass="1" target="_blank">on my Github</a>.</p></li>
+
+        <li><p>The wonderful Reportworm logo is by <a href="https://twitter.com/Chufflepop" data-pass="1" target="_blank">Chufflepop</a>.</p></li>
+
+        <li><p>This site uses <a href="https://vuejs.org" data-pass="1" target="_blank">Vue.js</a> for the front-end.</p></li>
+
+        <li><p>Reportworm Hub proudly contains 0% AI generated code, and is made in New York. You can check out the <a href="https://github.com/mikewVGC/reportworm-hub" data-pass="1" target="_blank">the Github repo</a> if you're interested.</p></li>
+    </ul>
+
+</template>
+
+<template id="migration-template">
+
+    <h2>Running Migration</h2>
+
+    <p>Transferring reports to Reportworm Reporter...</p>
+
+</template>
+
+__VUE__
+
+<script type="module">
+import { createApp } from 'vue';
+import App from '__SCRIPT_FILE__';
+export default App;
+const app = createApp(App).mount('#app');
+
+app.setBootstrapData({
+    sitesNav: JSON.parse('__SITES_NAV_DATA__'),
+});
+
+app.init();
+</script>
+
+</body>
+</html>
