@@ -85,9 +85,15 @@
                     "ref": "footer"
                 },
                 {
+                    "token": "__SITES_NAV_MENU__",
+                    "type": "sites_nav",
+                    "nav_type": "menu"
+                },
+                {
                     "token": "__SITES_NAV_DATA__",
-                    "type": "file",
-                    "location": "data/common/sites-nav.json"
+                    "type": "sites_nav",
+                    "nav_type": "bootstrap",
+                    "active": "reportworm-hub"
                 },
                 {
                     "token": "__SCRIPT_FILE__",

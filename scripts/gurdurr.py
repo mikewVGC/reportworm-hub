@@ -9,7 +9,7 @@ from reportworm_builder.builder_cache import BuilderCache
 def main():
     parser = argparse.ArgumentParser(
         prog="./scripts/gurdurr.py",
-        description="Gurdurr builds Reportworm Home. Not much else to do!",
+        description="Gurdurr builds Reportworm Hub. Not much else to do!",
     )
 
     cl = parser.parse_args()
@@ -21,14 +21,6 @@ def main():
     except FileNotFoundError:
         print("Could not find config.json, exiting")
         return
-
-    try:
-        with open("data/common/sites-nav-source.json") as file:
-            sites_nav = json.loads(file.read())
-            with open("data/common/sites-nav.json", "w") as ofile:
-                ofile.write(json.dumps(sites_nav, separators=(',', ':')))
-    except FileNotFoundError:
-        print("Couldn't open sites-nav-source.json")
 
     builder = Builder(config, {})
     builder.build()
