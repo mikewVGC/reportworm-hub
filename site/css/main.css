@@ -42,7 +42,7 @@ nav#sites-nav div.active {
     top: 1px;
 }
 
-nav#sites-nav div a {
+nav#sites-nav div a, nav#sites-nav div span {
     display: block;
     padding: .75em .75em;
 }
@@ -300,6 +300,11 @@ ul.top-menu li:nth-child(2) {
 
 /* mobile */
 @media (max-width: 40.5em) {
+    header#header h1 {
+        background-size: contain;
+        height: 125px;
+    }
+
     nav#sites-nav {
         margin: .5em;
         padding: .5em .25em;
