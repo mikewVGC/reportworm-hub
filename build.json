@@ -96,6 +96,11 @@
                     "active": "reportworm-hub"
                 },
                 {
+                    "token": "__SITES_NAV_STYLESHEET__",
+                    "type": "sites_nav",
+                    "nav_type": "stylesheet"
+                },
+                {
                     "token": "__SCRIPT_FILE__",
                     "type": "flag",
                     "name": "mode",
