@@ -388,8 +388,8 @@ wheels = [
 
 [[package]]
 name = "reportworm-builder"
-version = "1.2.1"
-source = { git = "https://github.com/mikewVGC/reportworm-builder.git#3e6d315d567092179f1c00f3e734ab22c22f8e9d" }
+version = "1.2.3"
+source = { git = "https://github.com/mikewVGC/reportworm-builder.git#3a997f56b334abefdc26cf588c162911f4c4f8d2" }
 dependencies = [
     { name = "setuptools" },
     { name = "twine" },
